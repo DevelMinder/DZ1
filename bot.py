@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('6700580120:AAHl6QQQWO9io3R_KEa8OX3KDBXSSoGBdz4')
+bot = telebot.TeleBot('')
 
 user_data = {}
 
@@ -37,13 +37,6 @@ def process_firstname_step(message):
 def process_birthday_step(message):
     chat_id = message.chat.id
     user_data[chat_id][-1]['birthday'] = message.text
-
-    msg = bot.send_message(chat_id, "Введите вашу почту:")
-    bot.register_next_step_handler(msg, process_email_step)
-
-def process_email_step(message):
-    chat_id = message.chat.id
-    user_data[chat_id][-1]['email'] = message.text
 
     bot.send_message(chat_id, "Информация успешно собрана!")
 
